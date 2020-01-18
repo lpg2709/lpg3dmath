@@ -66,24 +66,27 @@ void rotation4f(matrix44f m, float angulo, float x, float y, float z){
     |[             0        ] [             0        ] [             0        ]   [1]   |
 */
 }
+void scale4f(matrix44f m, float x, float y, float z){
 
-void scale4fv(matrix44f m, vec3f vec){
     #define M(l,c) m[(c*4)+l]
 
-    loadIdentity(m);
-
-    M(0,0) = M(0,0)*vec[0];
-    M(1,1) = M(1,1)*vec[1];
-    M(2,2) = M(2,2)*vec[2];
+    M(0,0) = M(0,0)*x;
+    M(1,1) = M(1,1)*y;
+    M(2,2) = M(2,2)*z;
     M(3,3) = 1;
 
     #undef M
+
+}
+
+void scale4fv(matrix44f m, vec3f vec){
+
+    scale4f(m, vec[0], vec[1], vec[2]);
+
 }
 
 void translate4f(matrix44f m, vec3f vec){
     #define M(l,c) m[(c*4)+l]
-
-    loadIdentity(m);
 
     M(0,3) = M(0,3) + vec[0];
     M(1,3) = M(1,3) + vec[1];
