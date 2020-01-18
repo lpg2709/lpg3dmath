@@ -7,7 +7,7 @@
 
 
 #define PI (3.14159265358979323846)
-#define 2PI (2.0*PI)
+#define TOW_PI (2.0*PI)
 #define PI_DIV_180 (0.017453292519943296)
 #define PI_DIV_180_INV (57.2957795130823229)
 
@@ -47,7 +47,7 @@ typedef double vec2d[2];
 void loadIdentity(matrix44f m);
 
 void rotation4f(matrix44f m, float angulo, float x, float y, float z);
-void scale4f(matrix44f m, vec3f vec);
+void scale4fv(matrix44f m, vec3f vec);
 void translate4f(matrix44f m, vec3f vec);
 void multi4f(matrix44f m, matrix44f a, matrix44f b);
 void vecCrossProduct4f(float m[3], float u[3], float v[3]);

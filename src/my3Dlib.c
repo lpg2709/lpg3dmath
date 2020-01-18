@@ -67,8 +67,10 @@ void rotation4f(matrix44f m, float angulo, float x, float y, float z){
 */
 }
 
-void scale4f(matrix44f m, vec3f vec){
-    #define M(c,l) m[(c*4)+l]
+void scale4fv(matrix44f m, vec3f vec){
+    #define M(l,c) m[(c*4)+l]
+
+    loadIdentity(m);
 
     M(0,0) = M(0,0)*vec[0];
     M(1,1) = M(1,1)*vec[1];
@@ -79,7 +81,9 @@ void scale4f(matrix44f m, vec3f vec){
 }
 
 void translate4f(matrix44f m, vec3f vec){
-    #define M(c,l) m[(c*4)+l]
+    #define M(l,c) m[(c*4)+l]
+
+    loadIdentity(m);
 
     M(0,3) = M(0,3) + vec[0];
     M(1,3) = M(1,3) + vec[1];
@@ -90,9 +94,9 @@ void translate4f(matrix44f m, vec3f vec){
 }
 
 void multi4f(matrix44f m, matrix44f a, matrix44f b){
-    #define A(c,l) a[(c*4)+l]
-    #define B(c,l) b[(c*4)+l]
-    #define C(c,l) m[(c*4)+l]
+    #define A(l,c) a[(c*4)+l]
+    #define B(l,c) b[(c*4)+l]
+    #define C(l,c) m[(c*4)+l]
     int i;
     for(i = 0; i<4;i++){
         C(i,0) = (A(i,0) * B(0,0)) + (A(i,1) * B(1,0)) + (A(i,2) * B(2,0));
