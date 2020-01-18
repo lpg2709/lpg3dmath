@@ -9,6 +9,8 @@ int main(){
     loadIdentity(m);
 
     int i;
+    vec3f vec = {2, 2, 2};
+    scale4f(m, vec);
 
     for(i = 0; i < 16;i++){
         if(i%4 == 0 && i != 0)

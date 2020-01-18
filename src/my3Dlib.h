@@ -25,6 +25,7 @@ typedef double vec2d[2];
 void loadIdentity(matrix44f m);
 
 void rotation4f(matrix44f m, float angulo, float x, float y, float z);
+void scale4f(matrix44f m, vec3f vec);
 void multi4f(matrix44f m, matrix44f a, matrix44f b);
 void vecCrossProduct4f(float m[3], float u[3], float v[3]);
 void vecSize4f(float vetor[3], float *tam);
