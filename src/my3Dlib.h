@@ -5,11 +5,22 @@
 #include <math.h>
 #include <string.h>
 
+/*--------------- Data Type ----------------*/
+
+/*-- Matrixs --*/
+typedef float matrix22f[4];
+typedef int matrix22i[4];
+typedef double matrix22d[4];
+
+typedef float matrix33f[9];
+typedef int matrix33i[9];
+typedef double matrix33d[9];
 
 typedef float matrix44f[16];
 typedef int matrix44i[16];
 typedef double matrix44d[16];
 
+/*-- Vectors --*/
 typedef float vec4f[4];
 typedef float vec3f[3];
 typedef float vec2f[2];
@@ -22,6 +33,8 @@ typedef double vec4d[4];
 typedef double vec3d[3];
 typedef double vec2d[2];
 
+
+/*--------- Operations functions -----------*/
 void loadIdentity(matrix44f m);
 
 void rotation4f(matrix44f m, float angulo, float x, float y, float z);
