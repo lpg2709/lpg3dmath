@@ -5,6 +5,15 @@
 #include <math.h>
 #include <string.h>
 
+
+#define PI (3.14159265358979323846)
+#define 2PI (2.0*PI)
+#define PI_DIV_180 (0.017453292519943296)
+#define PI_DIV_180_INV (57.2957795130823229)
+
+#define degreeToRad(x) ((x)*PI_DIV_180)
+#define radToDegree(x) ((x)*PI_DIV_180_INV)
+
 /*--------------- Data Type ----------------*/
 
 /*-- Matrixs --*/
