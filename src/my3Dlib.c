@@ -78,6 +78,17 @@ void scale4f(matrix44f m, vec3f vec){
     #undef M
 }
 
+void translate4f(matrix44f m, vec3f vec){
+    #define M(c,l) m[(c*4)+l]
+
+    M(0,3) = M(0,3) + vec[0];
+    M(1,3) = M(1,3) + vec[1];
+    M(2,3) = M(2,3) + vec[2];
+    M(3,3) = 1;
+
+    #undef M
+}
+
 void multi4f(matrix44f m, matrix44f a, matrix44f b){
     #define A(c,l) a[(c*4)+l]
     #define B(c,l) b[(c*4)+l]

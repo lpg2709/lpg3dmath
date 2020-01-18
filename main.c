@@ -10,6 +10,7 @@ int main(){
 
     int i;
     vec3f vec = {2, 2, 2};
+    translate4f(m, vec);
     scale4f(m, vec);
 
     for(i = 0; i < 16;i++){
