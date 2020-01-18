@@ -1,6 +1,6 @@
 #include "./my3Dlib.h"
 
-void loadIdentity(matrix44f m[16]){
+void loadIdentity(matrix44f m){
 
     static matrix44f matrixIdentity = { 1.0f, 0.0f, 0.0f, 0.0f,
                                         0.0f, 1.0f, 0.0f, 0.0f,
@@ -10,7 +10,7 @@ void loadIdentity(matrix44f m[16]){
     memcpy(m, matrixIdentity, sizeof(matrixIdentity));
 }
 
-void rotation4f(float m[16], float angulo, float x, float y, float z){
+void rotation4f(matrix44f m, float angulo, float x, float y, float z){
     float seno, cosseno, moduloVetor;
     float xx,yy,zz,xy,xz,yz,xseno,zseno,yseno,umMenosCosseno;
 
@@ -67,7 +67,7 @@ void rotation4f(float m[16], float angulo, float x, float y, float z){
 */
 }
 
-void multi4f(float m[16], float a[16], float b[16]){
+void multi4f(matrix44f m, matrix44f a, matrix44f b){
     #define A(c,l) a[(c*4)+l]
     #define B(c,l) b[(c*4)+l]
     #define C(c,l) m[(c*4)+l]
@@ -93,7 +93,7 @@ void vecCrossProduct4f(float m[3], float u[3], float v[3]){
 void vecSize4f(float vetor[3], float *tam){
     *tam = sqrt((vetor[0]*vetor[0]) + (vetor[1]*vetor[1]) + (vetor[2]*vetor[2]));
 }
-void vecNormalize3f(float vetor[3]){
+void vecNormalize3f(vec3f vetor){
     float tam;
     vecSize4f(vetor, &tam);
     vetor[0] = vetor[0] / tam;
