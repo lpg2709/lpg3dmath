@@ -85,7 +85,7 @@ void scale4fv(matrix44f m, vec3f vec){
 
 }
 
-void translate4f(matrix44f m, vec3f vec){
+void translate4f(matrix44f m,  float x, float y, float z){
     #define M(l,c) m[(c*4)+l]
 
     M(0,3) = M(0,3) + vec[0];
@@ -94,6 +94,10 @@ void translate4f(matrix44f m, vec3f vec){
     M(3,3) = 1;
 
     #undef M
+}
+
+void translate4fv(matrix44f m, vec3f vec){
+    translate4f(m, vec[0], vec[1], vec[2]);
 }
 
 void multi4f(matrix44f m, matrix44f a, matrix44f b){
