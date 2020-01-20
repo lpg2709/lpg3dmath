@@ -88,9 +88,9 @@ void scale4fv(matrix44f m, vec3f vec){
 void translate4f(matrix44f m,  float x, float y, float z){
     #define M(l,c) m[(c*4)+l]
 
-    M(0,3) = M(0,3) + vec[0];
-    M(1,3) = M(1,3) + vec[1];
-    M(2,3) = M(2,3) + vec[2];
+    M(0,3) = M(0,3) + x;
+    M(1,3) = M(1,3) + y;
+    M(2,3) = M(2,3) + z;
     M(3,3) = 1;
 
     #undef M
@@ -132,4 +132,38 @@ void vecNormalize3f(vec3f vetor){
     vetor[0] = vetor[0] / tam;
     vetor[1] = vetor[1] / tam;
     vetor[2] = vetor[2] / tam;
+}
+
+void printMatrix33f(matrix33f m){
+    int i;
+    printf("\n");
+    for(i = 0;i < 9;i++){
+        if(i%3 == 0 && i != 0)
+            printf("\n");
+        printf(" %.2f ", m[i]);
+    }
+    printf("\n");
+}
+
+void printMatrix22f(matrix22f m){
+    int i;
+    printf("\n");
+    for(i = 0;i < 4;i++){
+        if(i%2 == 0 && i != 0)
+            printf("\n");
+        printf(" %.2f ", m[i]);
+    }
+    printf("\n");
+
+}
+
+void printMatrix44f(matrix44f m){
+    int i;
+    printf("\n");
+    for(i = 0;i < 16;i++){
+        if(i%4 == 0 && i != 0)
+            printf("\n");
+        printf(" %.2f ", m[i]);
+    }
+    printf("\n");
 }

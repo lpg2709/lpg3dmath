@@ -56,6 +56,10 @@ void vecCrossProduct4f(float m[3], float u[3], float v[3]);
 void vecSize4f(float vetor[3], float *tam);
 void vecNormalize3f(float vetor[3]);
 
+/*------------ Print functions -------------*/
+void printMatrix44f(matrix44f m);
+void printMatrix33f(matrix33f m);
+void printMatrix22f(matrix22f m);
 
 
 #endif

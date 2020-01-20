@@ -10,14 +10,10 @@ int main(){
 
     int i;
     vec3f vec = {2, 2, 2};
-    translate4f(m, vec);
+    translate4fv(m, vec);
     scale4fv(m, vec);
 
-    for(i = 0; i < 16;i++){
-        if(i%4 == 0 && i != 0)
-            printf("\n");
-        printf("%.1f ", m[i]);
-    }
+    printMatrix44f(m);
 
 
     return 0;
