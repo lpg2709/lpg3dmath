@@ -104,12 +104,18 @@ void multi4f(matrix44f m, matrix44f a, matrix44f b){
     #define A(l,c) a[(c*4)+l]
     #define B(l,c) b[(c*4)+l]
     #define C(l,c) m[(c*4)+l]
+
     int i;
-    for(i = 0; i<4;i++){
-        C(i,0) = (A(i,0) * B(0,0)) + (A(i,1) * B(1,0)) + (A(i,2) * B(2,0));
-        C(i,1) = (A(i,0) * B(0,1)) + (A(i,1) * B(1,1)) + (A(i,2) * B(2,1));
-        C(i,2) = (A(i,0) * B(0,2)) + (A(i,1) * B(1,2)) + (A(i,2) * B(2,2));
-        C(i,3) = (A(i,0) * B(0,3)) + (A(i,1) * B(1,3)) + (A(i,2) * B(2,3));
+    float ai0, ai1, ai2, ai3;
+    for(i = 0; i < 4;i++){
+        ai0 = A(i,0);
+        ai1 = A(i,1);
+        ai2 = A(i,2);
+        ai3 = A(i,3);
+        C(i,0) = (ai0 * B(0,0)) + (ai1 * B(1,0)) + (ai2 * B(2,0)) + (ai3 * B(3,0));
+        C(i,1) = (ai0 * B(0,1)) + (ai1 * B(1,1)) + (ai2 * B(2,1)) + (ai3 * B(3,1));
+        C(i,2) = (ai0 * B(0,2)) + (ai1 * B(1,2)) + (ai2 * B(2,2)) + (ai3 * B(3,2));
+        C(i,3) = (ai0 * B(0,3)) + (ai1 * B(1,3)) + (ai2 * B(2,3)) + (ai3 * B(3,3));
     }
 
     #undef A

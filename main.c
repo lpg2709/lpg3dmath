@@ -5,15 +5,25 @@
 
 int main(){
 
-    matrix44f m;
-    loadIdentity(m);
+    matrix44f m = {
+         1,  5,  9, 13,
+         2,  6, 10, 14,
+         3,  7, 11, 15,
+         4,  8, 12, 16
+    };
 
-    int i;
-    vec3f vec = {2, 2, 2};
-    translate4fv(m, vec);
-    scale4fv(m, vec);
+    matrix44f n = {
+         2,  2,  2,  2,
+         2,  2,  2,  2,
+         2,  2,  2,  2,
+         2,  2,  2,  2
+    };
 
-    printMatrix44f(m);
+    matrix44f res;
+
+    multi4f(res, m, n);
+
+    printMatrix44f(res);
 
 
     return 0;
