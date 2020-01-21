@@ -70,6 +70,13 @@ void rotationd4f(matrix44f m, float angulo, float x, float y, float z){
     rotationr4f(m, angulo, x, y, z);
 }
 
+void rotationd4fv(matrix44f m, float angulo, vec3f vec){
+    rotationd4f(m, angulo, vec[0], vec[1], vec[2]);
+}
+void rotationr4fv(matrix44f m, float angulo, vec3f vec){
+    rotationr4f(m, angulo, vec[0], vec[1], vec[2]);
+}
+
 void scale4f(matrix44f m, float x, float y, float z){
 
     #define M(l,c) m[(c*4)+l]

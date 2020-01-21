@@ -20,10 +20,11 @@ int main(){
     };
 
     matrix44f res;
+    vec3f v = {0, 0, 1};
 
 //    multi4f(res, m, n);
 
-    rotationd4f(n, 90, 0, 0, 1);
+    rotationr4fv(n, 90, v);
 
     printMatrix44f(n);
 
