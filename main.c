@@ -21,9 +21,11 @@ int main(){
 
     matrix44f res;
 
-    multi4f(res, m, n);
+//    multi4f(res, m, n);
 
-    printMatrix44f(res);
+    rotationd4f(n, 90, 0, 0, 1);
+
+    printMatrix44f(n);
 
 
     return 0;

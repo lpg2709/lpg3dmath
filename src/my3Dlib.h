@@ -46,7 +46,8 @@ typedef double vec2d[2];
 /*--------- Operations functions -----------*/
 void loadIdentity(matrix44f m);
 
-void rotation4f(matrix44f m, float angulo, float x, float y, float z);
+void rotationd4f(matrix44f m, float angulo, float x, float y, float z);
+void rotationr4f(matrix44f m, float angulo, float x, float y, float z);
 void scale4f(matrix44f m, float x, float y, float z);
 void scale4fv(matrix44f m, vec3f vec);
 void translate4fv(matrix44f m, vec3f vec);

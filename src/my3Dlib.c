@@ -10,11 +10,9 @@ void loadIdentity(matrix44f m){
     memcpy(m, matrixIdentity, sizeof(matrixIdentity));
 }
 
-void rotation4f(matrix44f m, float angulo, float x, float y, float z){
+void rotationr4f(matrix44f m, float angulo, float x, float y, float z){
     float seno, cosseno, moduloVetor;
     float xx,yy,zz,xy,xz,yz,xseno,zseno,yseno,umMenosCosseno;
-
-    angulo = angulo*0.017453292519943296;
 
     seno = (float)sin(angulo);
     cosseno = (float) cos(angulo);
@@ -66,6 +64,12 @@ void rotation4f(matrix44f m, float angulo, float x, float y, float z){
     |[             0        ] [             0        ] [             0        ]   [1]   |
 */
 }
+
+void rotationd4f(matrix44f m, float angulo, float x, float y, float z){
+    angulo = angulo*0.017453292519943296;
+    rotationr4f(m, angulo, x, y, z);
+}
+
 void scale4f(matrix44f m, float x, float y, float z){
 
     #define M(l,c) m[(c*4)+l]
