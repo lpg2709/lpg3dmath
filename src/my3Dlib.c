@@ -1,16 +1,16 @@
 #include "./my3Dlib.h"
 
-void loadIdentity(matrix44f m){
+void lpgM3DloadIdentity(lpgM3Dmatrix44f m){
 
-    static matrix44f matrixIdentity = { 1.0f, 0.0f, 0.0f, 0.0f,
-                                        0.0f, 1.0f, 0.0f, 0.0f,
-                                        0.0f, 0.0f, 1.0f, 0.0f,
-                                        0.0f, 0.0f, 0.0f, 1.0f };
+    static lpgM3Dmatrix44f matrixIdentity = { 1.0f, 0.0f, 0.0f, 0.0f,
+                                             0.0f, 1.0f, 0.0f, 0.0f,
+                                             0.0f, 0.0f, 1.0f, 0.0f,
+                                             0.0f, 0.0f, 0.0f, 1.0f };
 
     memcpy(m, matrixIdentity, sizeof(matrixIdentity));
 }
 
-void rotationr4f(matrix44f m, float angulo, float x, float y, float z){
+void lpgM3Drotationr4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z){
     float seno, cosseno, moduloVetor;
     float xx,yy,zz,xy,xz,yz,xseno,zseno,yseno,umMenosCosseno;
 
@@ -65,19 +65,19 @@ void rotationr4f(matrix44f m, float angulo, float x, float y, float z){
 */
 }
 
-void rotationd4f(matrix44f m, float angulo, float x, float y, float z){
+void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z){
     angulo = angulo*0.017453292519943296;
-    rotationr4f(m, angulo, x, y, z);
+    lpgM3Drotationr4f(m, angulo, x, y, z);
 }
 
-void rotationd4fv(matrix44f m, float angulo, vec3f vec){
-    rotationd4f(m, angulo, vec[0], vec[1], vec[2]);
+void lpgM3Drotationd4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec){
+    lpgM3Drotationd4f(m, angulo, vec[0], vec[1], vec[2]);
 }
-void rotationr4fv(matrix44f m, float angulo, vec3f vec){
-    rotationr4f(m, angulo, vec[0], vec[1], vec[2]);
+void lpgM3Drotationr4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec){
+    lpgM3Drotationr4f(m, angulo, vec[0], vec[1], vec[2]);
 }
 
-void scale4f(matrix44f m, float x, float y, float z){
+void lpgM3Dscale4f(lpgM3Dmatrix44f m, float x, float y, float z){
 
     #define M(l,c) m[(c*4)+l]
 
@@ -90,13 +90,13 @@ void scale4f(matrix44f m, float x, float y, float z){
 
 }
 
-void scale4fv(matrix44f m, vec3f vec){
+void lpgM3Dscale4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec){
 
-    scale4f(m, vec[0], vec[1], vec[2]);
+    lpgM3Dscale4f(m, vec[0], vec[1], vec[2]);
 
 }
 
-void translate4f(matrix44f m,  float x, float y, float z){
+void lpgM3Dtranslate4f(lpgM3Dmatrix44f m,  float x, float y, float z){
     #define M(l,c) m[(c*4)+l]
 
     M(0,3) = M(0,3) + x;
@@ -107,11 +107,11 @@ void translate4f(matrix44f m,  float x, float y, float z){
     #undef M
 }
 
-void translate4fv(matrix44f m, vec3f vec){
-    translate4f(m, vec[0], vec[1], vec[2]);
+void lpgM3Dtranslate4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec){
+    lpgM3Dtranslate4f(m, vec[0], vec[1], vec[2]);
 }
 
-void multi4f(matrix44f m, matrix44f a, matrix44f b){
+void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b){
     #define A(l,c) a[(c*4)+l]
     #define B(l,c) b[(c*4)+l]
     #define C(l,c) m[(c*4)+l]
@@ -134,24 +134,24 @@ void multi4f(matrix44f m, matrix44f a, matrix44f b){
     #undef C
 }
 
-void vecCrossProduct4f(float m[3], float u[3], float v[3]){
+void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]){
     m[0] = u[1]*v[2] - v[1]*u[2];
     m[1] =-u[0]*v[2] + v[0]*u[2];
     m[2] = u[0]*v[1] - v[0]*u[1];
 }
 
-void vecSize4f(float vetor[3], float *tam){
+void lpgM3DvecSize4f(float vetor[3], float *tam){
     *tam = sqrt((vetor[0]*vetor[0]) + (vetor[1]*vetor[1]) + (vetor[2]*vetor[2]));
 }
-void vecNormalize3f(vec3f vetor){
+void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
     float tam;
-    vecSize4f(vetor, &tam);
+    lpgM3DvecSize4f(vetor, &tam);
     vetor[0] = vetor[0] / tam;
     vetor[1] = vetor[1] / tam;
     vetor[2] = vetor[2] / tam;
 }
 
-void printMatrix33f(matrix33f m){
+void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m){
     int i;
     printf("\n");
     for(i = 0;i < 9;i++){
@@ -162,7 +162,7 @@ void printMatrix33f(matrix33f m){
     printf("\n");
 }
 
-void printMatrix22f(matrix22f m){
+void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m){
     int i;
     printf("\n");
     for(i = 0;i < 4;i++){
@@ -174,7 +174,7 @@ void printMatrix22f(matrix22f m){
 
 }
 
-void printMatrix44f(matrix44f m){
+void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m){
     int i;
     printf("\n");
     for(i = 0;i < 16;i++){

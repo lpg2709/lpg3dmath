@@ -5,28 +5,28 @@
 
 int main(){
 
-    matrix44f m = {
+    lpgM3Dmatrix44f m = {
          1,  5,  9, 13,
          2,  6, 10, 14,
          3,  7, 11, 15,
          4,  8, 12, 16
     };
 
-    matrix44f n = {
+    lpgM3Dmatrix44f n = {
          2,  2,  2,  2,
          2,  2,  2,  2,
          2,  2,  2,  2,
          2,  2,  2,  2
     };
 
-    matrix44f res;
-    vec3f v = {0, 0, 1};
+    lpgM3Dmatrix44f res;
+    lpgM3Dvec3f v = {0, 0, 1};
 
-//    multi4f(res, m, n);
+//    lpgM3Dmulti4f(res, m, n);
 
-    rotationr4fv(n, 90, v);
+    lpgM3Drotationr4fv(n, 90, v);
 
-    printMatrix44f(n);
+    lpgM3DprintMatrix44f(n);
 
 
     return 0;

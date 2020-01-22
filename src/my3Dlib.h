@@ -17,52 +17,88 @@
 /*--------------- Data Type ----------------*/
 
 /*-- Matrixs --*/
-typedef float matrix22f[4];
-typedef int matrix22i[4];
-typedef double matrix22d[4];
+typedef float lpgM3Dmatrix22f[4];
+typedef int lpgM3Dmatrix22i[4];
+typedef double lpgM3Dmatrix22d[4];
 
-typedef float matrix33f[9];
-typedef int matrix33i[9];
-typedef double matrix33d[9];
+typedef float lpgM3Dmatrix33f[9];
+typedef int lpgM3Dmatrix33i[9];
+typedef double lpgM3Dmatrix33d[9];
 
-typedef float matrix44f[16];
-typedef int matrix44i[16];
-typedef double matrix44d[16];
+typedef float lpgM3Dmatrix44f[16];
+typedef int lpgM3Dmatrix44i[16];
+typedef double lpgM3Dmatrix44d[16];
 
 /*-- Vectors --*/
-typedef float vec4f[4];
-typedef float vec3f[3];
-typedef float vec2f[2];
+typedef float lpgM3Dvec4f[4];
+typedef float lpgM3Dvec3f[3];
+typedef float lpgM3Dvec2f[2];
 
-typedef int vec4i[4];
-typedef int vec3i[3];
-typedef int vec2i[2];
+typedef int lpgM3Dvec4i[4];
+typedef int lpgM3Dvec3i[3];
+typedef int lpgM3Dvec2i[2];
 
-typedef double vec4d[4];
-typedef double vec3d[3];
-typedef double vec2d[2];
+typedef double lpgM3Dvec4d[4];
+typedef double lpgM3Dvec3d[3];
+typedef double lpgM3Dvec2d[2];
 
 
 /*--------- Operations functions -----------*/
-void loadIdentity(matrix44f m);
 
-void rotationd4f(matrix44f m, float angulo, float x, float y, float z);
-void rotationr4f(matrix44f m, float angulo, float x, float y, float z);
-void rotationd4fv(matrix44f m, float angulo, vec3f vec);
-void rotationr4fv(matrix44f m, float angulo, vec3f vec);
-void scale4f(matrix44f m, float x, float y, float z);
-void scale4fv(matrix44f m, vec3f vec);
-void translate4fv(matrix44f m, vec3f vec);
-void translate4f(matrix44f m,  float x, float y, float z);
-void multi4f(matrix44f m, matrix44f a, matrix44f b);
-void vecCrossProduct4f(float m[3], float u[3], float v[3]);
-void vecSize4f(float vetor[3], float *tam);
-void vecNormalize3f(float vetor[3]);
+/// @brief Load the identity matrix into your matrix
+/// @param [matrix44f] m - The matrix who recive the identity matrix
+/// @return void
+void lpgM3DloadIdentity(lpgM3Dmatrix44f m);
+
+
+/// @brief Calculate the rotation matrix give a angle in degree and a vector with each coordinate
+/// @param [matrix44f] m - The matrix who recive the rotation matrix
+/// @param [float] angulo - The angle in degree for rotation
+/// @param [float] x - The x coordinate of the vector
+/// @param [float] y - The y coordinate of the vector
+/// @param [float] z - The z coordinate of the vector
+/// @return void
+void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
+
+
+/// @brief Calculate the rotation matrix give a angle in radian and a vector with each coordinate
+/// @param [matrix44f] m - The matrix who recive the rotation matrix
+/// @param [float] angulo - The angle in radian for rotation
+/// @param [float] x - The x coordinate of the vector
+/// @param [float] y - The y coordinate of the vector
+/// @param [float] z - The z coordinate of the vector
+/// @return void
+void lpgM3Drotationr4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
+
+
+/// @brief Calculate the rotation matrix give a angle in degree and a vector
+/// @param [matrix44f] m - The matrix who recive the rotation matrix
+/// @param [float] angulo - The angle in degree for rotation
+/// @param [vec3f] vec - The vector
+/// @return void
+void lpgM3Drotationd4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec);
+
+/// @brief Calculate the rotation matrix give a angle in radian and a vector
+/// @param [matrix44f] m - The matrix who recive the rotation matrix
+/// @param [float] angulo - The angle in radian for rotation
+/// @param [vec3f] vec - The vector
+/// @return void
+void lpgM3Drotationr4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec);
+
+
+void lpgM3Dscale4f(lpgM3Dmatrix44f m, float x, float y, float z);
+void lpgM3Dscale4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
+void lpgM3Dtranslate4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
+void lpgM3Dtranslate4f(lpgM3Dmatrix44f m,  float x, float y, float z);
+void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b);
+void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]);
+void lpgM3DvecSize4f(float vetor[3], float *tam);
+void lpgM3DvecNormalize3f(float vetor[3]);
 
 /*------------ Print functions -------------*/
-void printMatrix44f(matrix44f m);
-void printMatrix33f(matrix33f m);
-void printMatrix22f(matrix22f m);
+void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m);
+void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m);
+void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m);
 
 
-#endif
+#endif // MY3DLIB_H
