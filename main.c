@@ -28,7 +28,7 @@ int main(){
 
     lpgM3DprintMatrix44f(n);
 
-
+    lpgm
     lpgM3Dmatrix44f ortho;
 
     lpgM3Dorth(-100, 100, -100, 100, 1, 100, ortho);

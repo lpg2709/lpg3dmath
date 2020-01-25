@@ -45,49 +45,68 @@ typedef double lpgM3Dvec2d[2];
 
 /*--------- Operations functions -----------*/
 
-/// @brief Load the identity matrix into your matrix
-/// @param [matrix44f] m - The matrix who recive the identity matrix
-/// @return void
+/*! @brief Load the identity matrix into your matrix
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the identity matrix
+ *  @return void
+ */
 void lpgM3DloadIdentity(lpgM3Dmatrix44f m);
 
 
-/// @brief Calculate the rotation matrix give a angle in degree and a vector with each coordinate
-/// @param [matrix44f] m - The matrix who recive the rotation matrix
-/// @param [float] angulo - The angle in degree for rotation
-/// @param [float] x - The x coordinate of the vector
-/// @param [float] y - The y coordinate of the vector
-/// @param [float] z - The z coordinate of the vector
-/// @return void
+/*! @brief Calculate the rotation matrix give a angle in degree and a vector with each coordinate
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [float] angulo - The angle in degree for rotation
+ *  @param [float] x - The x coordinate of the vector
+ *  @param [float] y - The y coordinate of the vector
+ *  @param [float] z - The z coordinate of the vector
+ *  @return void
+ */
 void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
 
 
-/// @brief Calculate the rotation matrix give a angle in radian and a vector with each coordinate
-/// @param [matrix44f] m - The matrix who recive the rotation matrix
-/// @param [float] angulo - The angle in radian for rotation
-/// @param [float] x - The x coordinate of the vector
-/// @param [float] y - The y coordinate of the vector
-/// @param [float] z - The z coordinate of the vector
-/// @return void
+/*! @brief Calculate the rotation matrix give a angle in radian and a vector with each coordinate
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [float] angulo - The angle in radian for rotation
+ *  @param [float] x - The x coordinate of the vector
+ *  @param [float] y - The y coordinate of the vector
+ *  @param [float] z - The z coordinate of the vector
+ *  @return void
+ */
 void lpgM3Drotationr4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
 
 
-/// @brief Calculate the rotation matrix give a angle in degree and a vector
-/// @param [matrix44f] m - The matrix who recive the rotation matrix
-/// @param [float] angulo - The angle in degree for rotation
-/// @param [vec3f] vec - The vector
-/// @return void
+/*! @brief Calculate the rotation matrix give a angle in degree and a vector
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [float] angulo - The angle in degree for rotation
+ *  @param [lpgM3Dvec3f] vec - The vector
+ *  @return void
+ */
 void lpgM3Drotationd4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec);
 
-/// @brief Calculate the rotation matrix give a angle in radian and a vector
-/// @param [matrix44f] m - The matrix who recive the rotation matrix
-/// @param [float] angulo - The angle in radian for rotation
-/// @param [vec3f] vec - The vector
-/// @return void
+/*! @brief Calculate the rotation matrix give a angle in radian and a vector
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [float] angulo - The angle in radian for rotation
+ *  @param [lpgM3Dvec3f] vec - The vector
+ *  @return void
+ */
 void lpgM3Drotationr4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec);
 
-
+/*! @brief Calculate the scaling matrix give the how much scaling in the axis.
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the scaling matrix
+ *  @param [float] x - How much scaling in the X axis
+ *  @param [float] y - How much scaling in the Y axis
+ *  @param [float] z - How much scaling in the Z axis
+ *  @return void
+ */
 void lpgM3Dscale4f(lpgM3Dmatrix44f m, float x, float y, float z);
+
+/*! @brief Calculate the scaling matrix give the how much scaling in the axis with one vector.
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the scaling matrix
+ *  @param [lpgM3Dvec3f] vec - How much scaling in the axis
+ *  @return void
+ */
 void lpgM3Dscale4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
+
+
 void lpgM3Dtranslate4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
 void lpgM3Dtranslate4f(lpgM3Dmatrix44f m,  float x, float y, float z);
 void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b);
@@ -95,7 +114,26 @@ void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]);
 void lpgM3DvecSize4f(float vetor[3], float *tam);
 void lpgM3DvecNormalize3f(float vetor[3]);
 
+/*! @brief Create the ortho matrix.
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the ortho matrix
+ *  @param [float] left - Specifies the left finla coordenate.
+ *  @param [float] right - Specifies the right finla coordenate
+ *  @param [float] bottom - Specifies the bottom finla coordenate
+ *  @param [float] top - Specifies the top finla coordenate
+ *  @param [float] near - Specifies the near finla coordenate
+ *  @param [float] far - Specifies the far finla coordenate
+ *  @return void
+ */
 void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float top, float near, float far);
+
+/*! @brief Create the perspective matrix.
+ *  @param [lpgM3Dmatrix44f] m - The matrix who recive the perspective matrix
+ *  @param [float] fov - Specifies the fov in degree.
+ *  @param [float] aspect - Specifies the aspect ration of the screen
+ *  @param [float] near - Specifies the near finla coordenate
+ *  @param [float] far - Specifies the far finla coordenate
+ *  @return void
+ */
 void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, float far);
 
 
