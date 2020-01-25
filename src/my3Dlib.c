@@ -184,3 +184,55 @@ void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m){
     }
     printf("\n");
 }
+
+void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float top, float near, float far){
+
+    lpgM3DloadIdentity(m);
+
+    float rl, tb, fn, plusrl, plustb, plusfn;
+
+    rl = right-left;
+    tb = top-bottom;
+    fn = far-near;
+    plusrl = right+left;
+    plustb = top+bottom;
+    plusfn = far+near;
+
+    m[0] = (2.0f/rl);
+    m[3] = (-plusrl/rl);
+    m[5] = (2.0f/tb);
+    m[7] = (-plustb/tb);
+    m[10] = (-2.0f/fn);
+    m[11] = (-plusfn/fn);
+    m[15] = 1.0f;
+
+/*
+    |[2/(right-left)] [       0      ] [       0      ] [ -(right+left)/(right-left) ]|
+    |[       0      ] [2/(top-bottom)] [       0      ] [-((top+bottom)/(top-bottom))]|
+    |[       0      ] [       0      ] [ -2/(far-near)] [  -((far+near)/(far-near))  ]|
+    |[       0      ] [       0      ] [       0      ] [              1             ]|
+*/
+}
+
+
+void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, float far){
+
+    lpgM3DloadIdentity(m);
+
+    fov = fov*0.017453292519943296;
+
+    float top = near * tanf(fov*0.5);
+    float bottom = -top;
+    float left = bottom * aspect;
+    float right = -left;
+
+    m[0]  = (2.0f * near)/(left - right);
+    m[5]  = (2.0f * near)/(top - bottom);
+    m[8]  = (right + left)/((right - left));
+    m[9]  = (top + bottom)/(top-bottom);
+    m[10] = -((far + near)/(far-near));
+    m[11] = -1.0f;
+    m[14] = -((2.0f * (far*near))/(far-near));
+    m[15] = 0.0f;
+
+}

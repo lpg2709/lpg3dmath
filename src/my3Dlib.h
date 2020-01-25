@@ -95,6 +95,10 @@ void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]);
 void lpgM3DvecSize4f(float vetor[3], float *tam);
 void lpgM3DvecNormalize3f(float vetor[3]);
 
+void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float top, float near, float far);
+void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, float far);
+
+
 /*------------ Print functions -------------*/
 void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m);
 void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m);
