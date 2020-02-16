@@ -20,20 +20,13 @@ int main(){
     };
 
     lpgM3Dmatrix44f res;
-    lpgM3Dvec3f v = {0, 0, 1};
 
 //    lpgM3Dmulti4f(res, m, n);
 
-    lpgM3Drotationr4fv(n, 90, v);
 
-    lpgM3DprintMatrix44f(n);
+    lpgM3DsubtractVector3f(res, 3, 4, 0, 5, -1, 0);
 
-    lpgm
-    lpgM3Dmatrix44f ortho;
-
-    lpgM3Dorth(-100, 100, -100, 100, 1, 100, ortho);
-
-    lpgM3DprintMatrix44f(ortho);
+    lpgM3DprintVec3f(res);
 
 
     return 0;

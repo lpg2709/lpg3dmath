@@ -143,46 +143,31 @@ void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]){
 void lpgM3DvecSize4f(float vetor[3], float *tam){
     *tam = sqrt((vetor[0]*vetor[0]) + (vetor[1]*vetor[1]) + (vetor[2]*vetor[2]));
 }
+
+void lpgM3DaddVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
+    res[0] = aX + bX;
+    res[1] = aY + bY;
+    res[2] = aZ + bZ;
+}
+
+void lpgM3DaddVector3fi(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
+    lpgM3DaddVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
+}
+
+void lpgM3DsubtractVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
+    lpgM3DaddVector3f(res, aX, aY, aZ, -bX, -bY, -bZ);
+}
+
+void lpgM3DsubtractVector3fi(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
+    lpgM3DsubtractVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
+}
+
 void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
     float tam;
     lpgM3DvecSize4f(vetor, &tam);
     vetor[0] = vetor[0] / tam;
     vetor[1] = vetor[1] / tam;
     vetor[2] = vetor[2] / tam;
-}
-
-void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m){
-    int i;
-    printf("\n");
-    for(i = 0;i < 9;i++){
-        if(i%3 == 0 && i != 0)
-            printf("\n");
-        printf(" %.2f ", m[i]);
-    }
-    printf("\n");
-}
-
-void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m){
-    int i;
-    printf("\n");
-    for(i = 0;i < 4;i++){
-        if(i%2 == 0 && i != 0)
-            printf("\n");
-        printf(" %.2f ", m[i]);
-    }
-    printf("\n");
-
-}
-
-void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m){
-    int i;
-    printf("\n");
-    for(i = 0;i < 16;i++){
-        if(i%4 == 0 && i != 0)
-            printf("\n");
-        printf(" %.2f ", m[i]);
-    }
-    printf("\n");
 }
 
 void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float top, float near, float far){
@@ -235,4 +220,50 @@ void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, f
     m[14] = -((2.0f * (far*near))/(far-near));
     m[15] = 0.0f;
 
+}
+
+
+void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, float targerX, float targerY, float targerZ, float upX, float upY, float upZ){
+    lpgM3Dvec3f direction;
+
+}
+
+
+
+void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m){
+    int i;
+    printf("\n");
+    for(i = 0;i < 9;i++){
+        if(i%3 == 0 && i != 0)
+            printf("\n");
+        printf(" %.2f ", m[i]);
+    }
+    printf("\n");
+}
+
+void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m){
+    int i;
+    printf("\n");
+    for(i = 0;i < 4;i++){
+        if(i%2 == 0 && i != 0)
+            printf("\n");
+        printf(" %.2f ", m[i]);
+    }
+    printf("\n");
+
+}
+
+void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m){
+    int i;
+    printf("\n");
+    for(i = 0;i < 16;i++){
+        if(i%4 == 0 && i != 0)
+            printf("\n");
+        printf(" %.2f ", m[i]);
+    }
+    printf("\n");
+}
+
+void lpgM3DprintVec3f(lpgM3Dvec3f v){
+    printf("\n(%f, %f, %f)\n", v[0], v[1], v[2]);
 }
