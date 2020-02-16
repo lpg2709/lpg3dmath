@@ -134,11 +134,16 @@ void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b){
     #undef C
 }
 
-void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]){
-    m[0] = u[1]*v[2] - v[1]*u[2];
-    m[1] =-u[0]*v[2] + v[0]*u[2];
-    m[2] = u[0]*v[1] - v[0]*u[1];
+void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
+    res[0] = aY*bZ - bY*aZ;
+    res[1] =-aX*bZ + bX*bZ;
+    res[2] = aX*bY - bX*bY;
 }
+
+void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f a, lpgM3Dvec3f b){
+    lpgM3DvecCrossProduct3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
+}
+
 
 void lpgM3DvecSize4f(float vetor[3], float *tam){
     *tam = sqrt((vetor[0]*vetor[0]) + (vetor[1]*vetor[1]) + (vetor[2]*vetor[2]));
@@ -150,7 +155,7 @@ void lpgM3DaddVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, 
     res[2] = aZ + bZ;
 }
 
-void lpgM3DaddVector3fi(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
+void lpgM3DaddVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
     lpgM3DaddVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
@@ -158,7 +163,7 @@ void lpgM3DsubtractVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float
     lpgM3DaddVector3f(res, aX, aY, aZ, -bX, -bY, -bZ);
 }
 
-void lpgM3DsubtractVector3fi(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
+void lpgM3DsubtractVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
     lpgM3DsubtractVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
@@ -225,6 +230,9 @@ void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, f
 
 void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, float targerX, float targerY, float targerZ, float upX, float upY, float upZ){
     lpgM3Dvec3f direction;
+    lpgM3DsubtractVector3f(direction, posX, posY, posZ, targerX, targerY, targerZ);
+    lpgM3DvecNormalize3f(direction);
+
 
 }
 

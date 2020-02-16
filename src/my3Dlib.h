@@ -111,7 +111,10 @@ void lpgM3DvecSize4f(float vetor[3], float *tam);
 void lpgM3Dtranslate4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
 void lpgM3Dtranslate4f(lpgM3Dmatrix44f m,  float x, float y, float z);
 void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b);
-void lpgM3DvecCrossProduct4f(float m[3], float u[3], float v[3]);
+
+void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ);
+void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f u, lpgM3Dvec3f v);
+
 void lpgM3DvecNormalize3f(float vetor[3]);
 
 /*! @brief Create the ortho matrix.
@@ -137,9 +140,9 @@ void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float 
 void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, float far);
 
 void lpgM3DaddVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ);
-void lpgM3DaddVector3fi(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b);
+void lpgM3DaddVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b);
 void lpgM3DsubtractVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ);
-void lpgM3DsubtractVector3fi(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b);
+void lpgM3DsubtractVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b);
 
 
 /*------------ Print functions -------------*/
