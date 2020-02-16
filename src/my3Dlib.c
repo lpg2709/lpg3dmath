@@ -141,7 +141,7 @@ void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, floa
 }
 
 void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f a, lpgM3Dvec3f b){
-    lpgM3DvecCrossProduct3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
+    lpgM3DvecCrossProduct3f(m, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
 
@@ -170,6 +170,9 @@ void lpgM3DsubtractVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
 void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
     float tam;
     lpgM3DvecSize4f(vetor, &tam);
+    if(tam == 0){
+        tam = 1;
+    }
     vetor[0] = vetor[0] / tam;
     vetor[1] = vetor[1] / tam;
     vetor[2] = vetor[2] / tam;
@@ -230,9 +233,53 @@ void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, f
 
 void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, float targerX, float targerY, float targerZ, float upX, float upY, float upZ){
     lpgM3Dvec3f direction;
+    lpgM3Dvec3f right;
+    lpgM3Dvec3f up;
+
+
     lpgM3DsubtractVector3f(direction, posX, posY, posZ, targerX, targerY, targerZ);
+    lpgM3DprintVec3f(direction);
     lpgM3DvecNormalize3f(direction);
 
+    lpgM3DvecCrossProduct3f(right, upX, upY, upZ, direction[0], direction[1], direction[2]);
+    lpgM3DprintVec3f(right);
+    lpgM3DvecNormalize3f(right);
+
+    lpgM3DvecCrossProduct3f(up, direction[0], direction[1], direction[2], right[0], right[1], right[2]);
+    lpgM3DprintVec3f(up);
+    lpgM3DvecNormalize3f(up);
+    lpgM3DprintVec3f(up);
+
+    #define A(l,c) lookAtm[(c*4)+l]
+
+    A(0, 0) = right[0];
+    A(0, 1) = right[1];
+    A(0, 2) = right[2];
+    A(0, 3) = (right[0]*(-posX)) + (right[1]*(-posY)) + (right[2]*(-posZ));
+
+
+    A(1, 0) = up[0];
+    A(1, 1) = up[1];
+    A(1, 2) = up[2];
+    A(1, 3) = (up[0]*(-posX)) + (up[1]*(-posY)) + (up[2]*(-posZ));
+
+    A(2, 0) = direction[0];
+    A(2, 1) = direction[1];
+    A(2, 2) = direction[2];
+    A(2, 3) = (direction[0]*(-posX)) + (direction[1]*(-posY)) + (direction[2]*(-posZ));
+
+    A(3, 0) = 0;
+    A(3, 1) = 0;
+    A(3, 2) = 0;
+    A(3, 3) = 1;
+
+    #undef A
+/*
+    |[ Rx ] [ Ry ] [ Rz ] [ 0 ]|     |[ 1 ] [ 0 ] [ 0 ] [ -Px ]|
+    |[ Ux ] [ Uy ] [ Uz ] [ 0 ]|     |[ 0 ] [ 1 ] [ 0 ] [ -Py ]|
+    |[ Dx ] [ Dy ] [ Dz ] [ 0 ]|  *  |[ 0 ] [ 0 ] [ 1 ] [ -Pz ]|
+    |[  0 ] [  0 ] [  0 ] [ 1 ]|     |[ 0 ] [ 0 ] [ 0 ] [   1 ]|
+*/
 
 }
 

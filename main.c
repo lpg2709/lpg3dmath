@@ -23,10 +23,9 @@ int main(){
 
 //    lpgM3Dmulti4f(res, m, n);
 
+    lpgM3DlookAtf(res, 0, 0, 3, 0, 0, 0, 0, 1, 0);
 
-    lpgM3DsubtractVector3f(res, 3, 4, 0, 5, -1, 0);
-
-    lpgM3DprintVec3f(res);
+    lpgM3DprintMatrix44f(res);
 
 
     return 0;
