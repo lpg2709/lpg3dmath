@@ -105,7 +105,8 @@ void lpgM3Dscale4f(lpgM3Dmatrix44f m, float x, float y, float z);
  *  @return void
  */
 void lpgM3Dscale4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
-void lpgM3DvecSize4f(float vetor[3], float *tam);
+void lpgM3DvecSize4f(float x, float y, float z, float *tam);
+void lpgM3DvecSize4fv(lpgM3Dvec3f vetor, float *tam);
 
 
 void lpgM3Dtranslate4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec);
@@ -152,6 +153,7 @@ void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m);
 void lpgM3DprintVec3f(lpgM3Dvec3f v);
 
 void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, float targerX, float targerY, float targerZ, float upX, float upY, float upZ);
+void lpgM3DlookAtfv(lpgM3Dmatrix44f lookAtm, lpgM3Dvec3f position, lpgM3Dvec3f target, lpgM3Dvec3f up);
 
 
 #endif // MY3DLIB_H

@@ -144,9 +144,12 @@ void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f a, lpgM3Dvec3f b){
     lpgM3DvecCrossProduct3f(m, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
+void lpgM3DvecSize4f(float x, float y, float z, float *tam){
+    *tam = sqrt((x*x) + (y*y) + (z*z));
+}
 
-void lpgM3DvecSize4f(float vetor[3], float *tam){
-    *tam = sqrt((vetor[0]*vetor[0]) + (vetor[1]*vetor[1]) + (vetor[2]*vetor[2]));
+void lpgM3DvecSize4fv(lpgM3Dvec3f vetor, float *tam){
+    lpgM3DvecSize4f(vetor[0], vetor[1], vetor[2], tam);
 }
 
 void lpgM3DaddVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
@@ -282,8 +285,9 @@ void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, 
 */
 
 }
-
-
+void lpgM3DlookAtfv(lpgM3Dmatrix44f lookAtm, lpgM3Dvec3f position, lpgM3Dvec3f target, lpgM3Dvec3f up){
+    lpgM3DlookAtf(lookAtm, position[0],  position[1], position[2], target[0], target[1], target[2], up[0], up[1], up[2]);
+}
 
 void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m){
     int i;
