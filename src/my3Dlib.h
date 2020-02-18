@@ -116,7 +116,7 @@ void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b);
 void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ);
 void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f u, lpgM3Dvec3f v);
 
-void lpgM3DvecNormalize3f(float vetor[3]);
+void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor);
 
 /*! @brief Create the ortho matrix.
  *  @param [lpgM3Dmatrix44f] m - The matrix who recive the ortho matrix

@@ -172,7 +172,7 @@ void lpgM3DsubtractVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
 
 void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
     float tam;
-    lpgM3DvecSize4f(vetor, &tam);
+    lpgM3DvecSize4fv(vetor, &tam);
     if(tam == 0){
         tam = 1;
     }
