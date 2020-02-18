@@ -241,17 +241,13 @@ void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, 
 
 
     lpgM3DsubtractVector3f(direction, posX, posY, posZ, targerX, targerY, targerZ);
-    lpgM3DprintVec3f(direction);
     lpgM3DvecNormalize3f(direction);
 
     lpgM3DvecCrossProduct3f(right, upX, upY, upZ, direction[0], direction[1], direction[2]);
-    lpgM3DprintVec3f(right);
     lpgM3DvecNormalize3f(right);
 
     lpgM3DvecCrossProduct3f(up, direction[0], direction[1], direction[2], right[0], right[1], right[2]);
-    lpgM3DprintVec3f(up);
     lpgM3DvecNormalize3f(up);
-    lpgM3DprintVec3f(up);
 
     #define A(l,c) lookAtm[(c*4)+l]
 
