@@ -135,9 +135,9 @@ void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b){
 }
 
 void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
-    res[0] = aY*bZ - bY*aZ;
-    res[1] =-aX*bZ + bX*bZ;
-    res[2] = aX*bY - bX*bY;
+    res[0] = aYbZ - bYaZ;
+    res[1] =-aXbZ + bXaZ;
+    res[2] = aXbY - bXaY;
 }
 
 void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f a, lpgM3Dvec3f b){
