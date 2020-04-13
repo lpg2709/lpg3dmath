@@ -61,6 +61,7 @@ void lpgM3DloadIdentity(lpgM3Dmatrix44f m);
  *  @return void
  */
 void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
+// lpgM3Dmatrix44f *lpgM3Drotationd4fr(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
 
 
 /*! @brief Calculate the rotation matrix give a angle in radian and a vector with each coordinate
@@ -115,6 +116,9 @@ void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b);
 
 void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ);
 void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f u, lpgM3Dvec3f v);
+
+void lpgM3DvecScale(lpgM3Dvec3f m, float x);
+lpgM3Dvec3f *lpgM3DvecScaler(lpgM3Dvec3f m, float x);
 
 void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor);
 

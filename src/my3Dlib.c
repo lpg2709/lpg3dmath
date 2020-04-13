@@ -170,6 +170,17 @@ void lpgM3DsubtractVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
     lpgM3DsubtractVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
+
+void lpgM3DvecScale(lpgM3Dvec3f m, float x){
+    m[0] = m[0] * x;
+    m[1] = m[1] * x;
+    m[2] = m[2] * x;
+}
+lpgM3Dvec3f *lpgM3DvecScaler(lpgM3Dvec3f m, float x){
+    lpgM3DvecScale(m, x);
+    return m;
+}
+
 void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
     float tam;
     lpgM3DvecSize4fv(vetor, &tam);

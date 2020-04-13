@@ -21,11 +21,14 @@ int main(){
 
     lpgM3Dmatrix44f res;
 
-//    lpgM3Dmulti4f(res, m, n);
+    // lpgM3Dmulti4f(res, m, n);
 
-    lpgM3DlookAtf(res, 0, 0, 3, 0, 0, 0, 0, 1, 0);
+    // lpgM3DlookAtf(res, 0, 0, 3, 0, 0, 0, 0, 1, 0);
 
-    lpgM3DprintMatrix44f(res);
+    // lpgM3DprintMatrix44f(res);
+
+    lpgM3Dvec3f k = { 1,1,1};
+    lpgM3DprintVec3f(lpgM3DvecScaler(k,4));
 
 
     return 0;
