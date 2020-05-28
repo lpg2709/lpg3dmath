@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MY_3DLIB
 #include "./src/my3Dlib.h"
 
 int main(){
@@ -19,8 +20,6 @@ int main(){
          2,  2,  2,  2
     };
 
-    lpgM3Dmatrix44f res;
-
     // lpgM3Dmulti4f(res, m, n);
 
     // lpgM3DlookAtf(res, 0, 0, 3, 0, 0, 0, 0, 1, 0);
@@ -28,7 +27,8 @@ int main(){
     // lpgM3DprintMatrix44f(res);
 
     lpgM3Dvec3f k = { 1,1,1};
-    lpgM3DprintVec3f(lpgM3DvecScaler(k,4));
+    lpgM3DvecScale(k, 4);
+    lpgM3DprintVec3f(k);
 
 
     return 0;
