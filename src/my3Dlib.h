@@ -134,7 +134,7 @@ void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float 
  */
 void lpgM3Drotationr4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z){
     angulo = angulo*0.017453292519943296;
-    lpgM3Drotationr4f(m, angulo, x, y, z);
+    lpgM3Drotationd4f(m, angulo, x, y, z);
 }
 
 
