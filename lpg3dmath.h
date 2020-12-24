@@ -1,4 +1,4 @@
-#ifdef MY_3DLIB
+#ifdef LPG3DMATH_H
 
 #include <stdio.h>
 #include <math.h>
@@ -16,41 +16,41 @@
 /*--------------- Data Type ----------------*/
 
 /*-- Matrixs --*/
-typedef float lpgM3Dmatrix22f[4];
-typedef int lpgM3Dmatrix22i[4];
-typedef double lpgM3Dmatrix22d[4];
+typedef float lpg3dm_matrix22f[4];
+typedef int lpg3dm_matrix22i[4];
+typedef double lpg3dm_matrix22d[4];
 
-typedef float lpgM3Dmatrix33f[9];
-typedef int lpgM3Dmatrix33i[9];
-typedef double lpgM3Dmatrix33d[9];
+typedef float lpg3dm_matrix33f[9];
+typedef int lpg3dm_matrix33i[9];
+typedef double lpg3dm_matrix33d[9];
 
-typedef float lpgM3Dmatrix44f[16];
-typedef int lpgM3Dmatrix44i[16];
-typedef double lpgM3Dmatrix44d[16];
+typedef float lpg3dm_matrix44f[16];
+typedef int lpg3dm_matrix44i[16];
+typedef double lpg3dm_matrix44d[16];
 
 /*-- Vectors --*/
-typedef float lpgM3Dvec4f[4];
-typedef float lpgM3Dvec3f[3];
-typedef float lpgM3Dvec2f[2];
+typedef float lpg3dm_vec4f[4];
+typedef float lpg3dm_vec3f[3];
+typedef float lpg3dm_vec2f[2];
 
-typedef int lpgM3Dvec4i[4];
-typedef int lpgM3Dvec3i[3];
-typedef int lpgM3Dvec2i[2];
+typedef int lpg3dm_vec4i[4];
+typedef int lpg3dm_vec3i[3];
+typedef int lpg3dm_vec2i[2];
 
-typedef double lpgM3Dvec4d[4];
-typedef double lpgM3Dvec3d[3];
-typedef double lpgM3Dvec2d[2];
+typedef double lpg3dm_vec4d[4];
+typedef double lpg3dm_vec3d[3];
+typedef double lpg3dm_vec2d[2];
 
 
 /*--------- Operations functions -----------*/
 
 /*! @brief Load the identity matrix into your matrix
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the identity matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the identity matrix
  *  @return void
  */
-void lpgM3DloadIdentity(lpgM3Dmatrix44f m){
+void lpg3dm_loadIdentity(lpg3dm_matrix44f m){
 
-    static lpgM3Dmatrix44f matrixIdentity = { 1.0f, 0.0f, 0.0f, 0.0f,
+    static lpg3dm_matrix44f matrixIdentity = { 1.0f, 0.0f, 0.0f, 0.0f,
                                              0.0f, 1.0f, 0.0f, 0.0f,
                                              0.0f, 0.0f, 1.0f, 0.0f,
                                              0.0f, 0.0f, 0.0f, 1.0f };
@@ -60,14 +60,14 @@ void lpgM3DloadIdentity(lpgM3Dmatrix44f m){
 
 
 /*! @brief Calculate the rotation matrix give a angle in degree and a vector with each coordinate
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the rotation matrix
  *  @param [float] angulo - The angle in degree for rotation
  *  @param [float] x - The x coordinate of the vector
  *  @param [float] y - The y coordinate of the vector
  *  @param [float] z - The z coordinate of the vector
  *  @return void
  */
-void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z){
+void lpg3dm_rotationd4f(lpg3dm_matrix44f m, float angulo, float x, float y, float z){
     float seno, cosseno, moduloVetor;
     float xx,yy,zz,xy,xz,yz,xseno,zseno,yseno,umMenosCosseno;
 
@@ -121,51 +121,51 @@ void lpgM3Drotationd4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float 
     |[             0        ] [             0        ] [             0        ]   [1]   |
 */
 }
-// lpgM3Dmatrix44f *lpgM3Drotationd4fr(lpgM3Dmatrix44f m, float angulo, float x, float y, float z);
+// lpg3dm_matrix44f *lpg3dm_rotationd4fr(lpg3dm_matrix44f m, float angulo, float x, float y, float z);
 
 
 /*! @brief Calculate the rotation matrix give a angle in radian and a vector with each coordinate
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the rotation matrix
  *  @param [float] angulo - The angle in radian for rotation
  *  @param [float] x - The x coordinate of the vector
  *  @param [float] y - The y coordinate of the vector
  *  @param [float] z - The z coordinate of the vector
  *  @return void
  */
-void lpgM3Drotationr4f(lpgM3Dmatrix44f m, float angulo, float x, float y, float z){
+void lpg3dm_rotationr4f(lpg3dm_matrix44f m, float angulo, float x, float y, float z){
     angulo = angulo*0.017453292519943296;
-    lpgM3Drotationd4f(m, angulo, x, y, z);
+    lpg3dm_rotationd4f(m, angulo, x, y, z);
 }
 
 
 /*! @brief Calculate the rotation matrix give a angle in degree and a vector
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the rotation matrix
  *  @param [float] angulo - The angle in degree for rotation
- *  @param [lpgM3Dvec3f] vec - The vector
+ *  @param [lpg3dm_vec3f] vec - The vector
  *  @return void
  */
-void lpgM3Drotationd4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec){
-    lpgM3Drotationd4f(m, angulo, vec[0], vec[1], vec[2]);
+void lpg3dm_rotationd4fv(lpg3dm_matrix44f m, float angulo, lpg3dm_vec3f vec){
+    lpg3dm_rotationd4f(m, angulo, vec[0], vec[1], vec[2]);
 }
 
 /*! @brief Calculate the rotation matrix give a angle in radian and a vector
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the rotation matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the rotation matrix
  *  @param [float] angulo - The angle in radian for rotation
- *  @param [lpgM3Dvec3f] vec - The vector
+ *  @param [lpg3dm_vec3f] vec - The vector
  *  @return void
  */
-void lpgM3Drotationr4fv(lpgM3Dmatrix44f m, float angulo, lpgM3Dvec3f vec){
-    lpgM3Drotationr4f(m, angulo, vec[0], vec[1], vec[2]);
+void lpg3dm_rotationr4fv(lpg3dm_matrix44f m, float angulo, lpg3dm_vec3f vec){
+    lpg3dm_rotationr4f(m, angulo, vec[0], vec[1], vec[2]);
 }
 
 /*! @brief Calculate the scaling matrix give the how much scaling in the axis.
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the scaling matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the scaling matrix
  *  @param [float] x - How much scaling in the X axis
  *  @param [float] y - How much scaling in the Y axis
  *  @param [float] z - How much scaling in the Z axis
  *  @return void
  */
-void lpgM3Dscale4f(lpgM3Dmatrix44f m, float x, float y, float z){
+void lpg3dm_scale4f(lpg3dm_matrix44f m, float x, float y, float z){
 
     #define M(l,c) m[(c*4)+l]
 
@@ -179,24 +179,24 @@ void lpgM3Dscale4f(lpgM3Dmatrix44f m, float x, float y, float z){
 }
 
 /*! @brief Calculate the scaling matrix give the how much scaling in the axis with one vector.
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the scaling matrix
- *  @param [lpgM3Dvec3f] vec - How much scaling in the axis
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the scaling matrix
+ *  @param [lpg3dm_vec3f] vec - How much scaling in the axis
  *  @return void
  */
-void lpgM3Dscale4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec){
+void lpg3dm_scale4fv(lpg3dm_matrix44f m, lpg3dm_vec3f vec){
 
-    lpgM3Dscale4f(m, vec[0], vec[1], vec[2]);
+    lpg3dm_scale4f(m, vec[0], vec[1], vec[2]);
 
 }
-void lpgM3DvecSize4f(float x, float y, float z, float *tam){
+void lpg3dm_vecSize4f(float x, float y, float z, float *tam){
     *tam = sqrt((x*x) + (y*y) + (z*z));
 }
 
-void lpgM3DvecSize4fv(lpgM3Dvec3f vetor, float *tam){
-    lpgM3DvecSize4f(vetor[0], vetor[1], vetor[2], tam);
+void lpg3dm_vecSize4fv(lpg3dm_vec3f vetor, float *tam){
+    lpg3dm_vecSize4f(vetor[0], vetor[1], vetor[2], tam);
 }
 
-void lpgM3Dtranslate4f(lpgM3Dmatrix44f m,  float x, float y, float z){
+void lpg3dm_translate4f(lpg3dm_matrix44f m,  float x, float y, float z){
     #define M(l,c) m[(c*4)+l]
 
     M(0,3) = M(0,3) + x;
@@ -208,11 +208,11 @@ void lpgM3Dtranslate4f(lpgM3Dmatrix44f m,  float x, float y, float z){
 }
 
 
-void lpgM3Dtranslate4fv(lpgM3Dmatrix44f m, lpgM3Dvec3f vec){
-    lpgM3Dtranslate4f(m, vec[0], vec[1], vec[2]);
+void lpg3dm_translate4fv(lpg3dm_matrix44f m, lpg3dm_vec3f vec){
+    lpg3dm_translate4f(m, vec[0], vec[1], vec[2]);
 }
 
-void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b){
+void lpg3dm_multi4f(lpg3dm_matrix44f m, lpg3dm_matrix44f a, lpg3dm_matrix44f b){
     #define A(l,c) a[(c*4)+l]
     #define B(l,c) b[(c*4)+l]
     #define C(l,c) m[(c*4)+l]
@@ -235,30 +235,30 @@ void lpgM3Dmulti4f(lpgM3Dmatrix44f m, lpgM3Dmatrix44f a, lpgM3Dmatrix44f b){
     #undef C
 }
 
-void lpgM3DvecCrossProduct3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
+void lpg3dm_vecCrossProduct3f(lpg3dm_vec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
     res[0] = aY*bZ - bY*aZ;
     res[1] =-aX*bZ + bX*aZ;
     res[2] = aX*bY - bX*aY;
 }
 
-void lpgM3DvecCrossProduct3fv(lpgM3Dvec3f m, lpgM3Dvec3f a, lpgM3Dvec3f b){
-    lpgM3DvecCrossProduct3f(m, a[0], a[1], a[2], b[0], b[1], b[2]);
+void lpg3dm_vecCrossProduct3fv(lpg3dm_vec3f m, lpg3dm_vec3f a, lpg3dm_vec3f b){
+    lpg3dm_vecCrossProduct3f(m, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
-void lpgM3DvecScale(lpgM3Dvec3f m, float x){
+void lpg3dm_vecScale(lpg3dm_vec3f m, float x){
     m[0] = m[0] * x;
     m[1] = m[1] * x;
     m[2] = m[2] * x;
 }
-void lpgM3DvecScalev(lpgM3Dvec3f r, lpgM3Dvec3f m,float x){
+void lpg3dm_vecScalev(lpg3dm_vec3f r, lpg3dm_vec3f m,float x){
     r[0] = m[0] * x;
     r[1] = m[1] * x;
     r[2] = m[2] * x;
 }
 
-void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
+void lpg3dm_vecNormalize3f(lpg3dm_vec3f vetor){
     float tam;
-    lpgM3DvecSize4fv(vetor, &tam);
+    lpg3dm_vecSize4fv(vetor, &tam);
     if(tam == 0){
         tam = 1;
     }
@@ -268,7 +268,7 @@ void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
 }
 
 /*! @brief Create the ortho matrix.
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the ortho matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the ortho matrix
  *  @param [float] left - Specifies the left finla coordenate.
  *  @param [float] right - Specifies the right finla coordenate
  *  @param [float] bottom - Specifies the bottom finla coordenate
@@ -277,9 +277,9 @@ void lpgM3DvecNormalize3f(lpgM3Dvec3f vetor){
  *  @param [float] far - Specifies the far finla coordenate
  *  @return void
  */
-void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float top, float near, float far){
+void lpg3dm_orth(lpg3dm_matrix44f m, float left, float right, float bottom, float top, float near, float far){
 
-    lpgM3DloadIdentity(m);
+    lpg3dm_loadIdentity(m);
 
     float rl, tb, fn, plusrl, plustb, plusfn;
 
@@ -307,16 +307,16 @@ void lpgM3Dorth(lpgM3Dmatrix44f m, float left, float right, float bottom, float 
 }
 
 /*! @brief Create the perspective matrix.
- *  @param [lpgM3Dmatrix44f] m - The matrix who recive the perspective matrix
+ *  @param [lpg3dm_matrix44f] m - The matrix who recive the perspective matrix
  *  @param [float] fov - Specifies the fov in degree.
  *  @param [float] aspect - Specifies the aspect ration of the screen
  *  @param [float] near - Specifies the near finla coordenate
  *  @param [float] far - Specifies the far finla coordenate
  *  @return void
  */
-void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, float far){
+void lpg3dm_perspective(lpg3dm_matrix44f m, float fov, float aspect, float near, float far){
 
-    lpgM3DloadIdentity(m);
+    lpg3dm_loadIdentity(m);
 
     fov = fov*0.017453292519943296;
 
@@ -336,24 +336,24 @@ void lpgM3Dperspective(lpgM3Dmatrix44f m, float fov, float aspect, float near, f
 
 }
 
-void lpgM3DaddVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
+void lpg3dm_addVector3f(lpg3dm_vec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
     res[0] = aX + bX;
     res[1] = aY + bY;
     res[2] = aZ + bZ;
 }
-void lpgM3DaddVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
-    lpgM3DaddVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
+void lpg3dm_addVector3fv(lpg3dm_vec3f res, lpg3dm_vec3f a, lpg3dm_vec3f b){
+    lpg3dm_addVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
-void lpgM3DsubtractVector3f(lpgM3Dvec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
-    lpgM3DaddVector3f(res, aX, aY, aZ, -bX, -bY, -bZ);
+void lpg3dm_subtractVector3f(lpg3dm_vec3f res, float aX, float aY, float aZ, float bX, float bY, float bZ){
+    lpg3dm_addVector3f(res, aX, aY, aZ, -bX, -bY, -bZ);
 }
-void lpgM3DsubtractVector3fv(lpgM3Dvec3f res, lpgM3Dvec3f a, lpgM3Dvec3f b){
-    lpgM3DsubtractVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
+void lpg3dm_subtractVector3fv(lpg3dm_vec3f res, lpg3dm_vec3f a, lpg3dm_vec3f b){
+    lpg3dm_subtractVector3f(res, a[0], a[1], a[2], b[0], b[1], b[2]);
 }
 
 
 /*------------ Print functions -------------*/
-void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m){
+void lpg3dm_printMatrix44f(lpg3dm_matrix44f m){
     int i;
     printf("\n");
     for(i = 0;i < 16;i++){
@@ -363,7 +363,7 @@ void lpgM3DprintMatrix44f(lpgM3Dmatrix44f m){
     }
     printf("\n");
 }
-void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m){
+void lpg3dm_printMatrix33f(lpg3dm_matrix33f m){
     int i;
     printf("\n");
     for(i = 0;i < 9;i++){
@@ -373,7 +373,7 @@ void lpgM3DprintMatrix33f(lpgM3Dmatrix33f m){
     }
     printf("\n");
 }
-void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m){
+void lpg3dm_printMatrix22f(lpg3dm_matrix22f m){
     int i;
     printf("\n");
     for(i = 0;i < 4;i++){
@@ -384,24 +384,24 @@ void lpgM3DprintMatrix22f(lpgM3Dmatrix22f m){
     printf("\n");
 
 }
-void lpgM3DprintVec3f(lpgM3Dvec3f v){
+void lpg3dm_printVec3f(lpg3dm_vec3f v){
     printf("\n(%f, %f, %f)\n", v[0], v[1], v[2]);
 }
 
-void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, float targerX, float targerY, float targerZ, float upX, float upY, float upZ){
-    lpgM3Dvec3f direction;
-    lpgM3Dvec3f right;
-    lpgM3Dvec3f up;
+void lpg3dm_lookAtf(lpg3dm_matrix44f lookAtm, float posX, float posY, float posZ, float targerX, float targerY, float targerZ, float upX, float upY, float upZ){
+    lpg3dm_vec3f direction;
+    lpg3dm_vec3f right;
+    lpg3dm_vec3f up;
 
 
-    lpgM3DsubtractVector3f(direction, posX, posY, posZ, targerX, targerY, targerZ);
-    lpgM3DvecNormalize3f(direction);
+    lpg3dm_subtractVector3f(direction, posX, posY, posZ, targerX, targerY, targerZ);
+    lpg3dm_vecNormalize3f(direction);
 
-    lpgM3DvecCrossProduct3f(right, upX, upY, upZ, direction[0], direction[1], direction[2]);
-    lpgM3DvecNormalize3f(right);
+    lpg3dm_vecCrossProduct3f(right, upX, upY, upZ, direction[0], direction[1], direction[2]);
+    lpg3dm_vecNormalize3f(right);
 
-    lpgM3DvecCrossProduct3f(up, direction[0], direction[1], direction[2], right[0], right[1], right[2]);
-    lpgM3DvecNormalize3f(up);
+    lpg3dm_vecCrossProduct3f(up, direction[0], direction[1], direction[2], right[0], right[1], right[2]);
+    lpg3dm_vecNormalize3f(up);
 
     #define A(l,c) lookAtm[(c*4)+l]
 
@@ -434,8 +434,8 @@ void lpgM3DlookAtf(lpgM3Dmatrix44f lookAtm, float posX, float posY, float posZ, 
     |[  0 ] [  0 ] [  0 ] [ 1 ]|     |[ 0 ] [ 0 ] [ 0 ] [   1 ]|
 */
 }
-void lpgM3DlookAtfv(lpgM3Dmatrix44f lookAtm, lpgM3Dvec3f position, lpgM3Dvec3f target, lpgM3Dvec3f up){
-    lpgM3DlookAtf(lookAtm, position[0],  position[1], position[2], target[0], target[1], target[2], up[0], up[1], up[2]);
+void lpg3dm_lookAtfv(lpg3dm_matrix44f lookAtm, lpg3dm_vec3f position, lpg3dm_vec3f target, lpg3dm_vec3f up){
+    lpg3dm_lookAtf(lookAtm, position[0],  position[1], position[2], target[0], target[1], target[2], up[0], up[1], up[2]);
 }
 
 
